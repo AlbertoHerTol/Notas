@@ -11,6 +11,7 @@ class DataBase{
   //Usuario
   UserCredential _userCredential;
   String _idUser;
+  var firebaseUser = null;
   //Notas
   String doc;
   Map<String, dynamic> JsonDoc;
@@ -26,11 +27,12 @@ class DataBase{
     print('Constructor DataBase' );
     //Usuario
     this._userCredential=user;
+    //firebaseUser =  FirebaseAuth.instance.currentUser;
     _idUser = user.additionalUserInfo.profile["aud"].toString();
     //Firebase
-      // Iniciamos
+    // Iniciamos
     BD = FirebaseFirestore.instance;
-    pinesColection = FirebaseFirestore.instance.collection("Usuarios");
+    pinesColection = BD.collection("Usuarios");
     if (BD==null ) print ("NO EXISTE LA FIRESTORE \n***********************\n");
     if (pinesColection==null ) print ("NO EXISTE LA COLLECION \n***********************\n");
 
@@ -50,10 +52,12 @@ class DataBase{
 
 
 
+
   Future<String> getDbData() async{
     var documento=null;
     print("\n\n-----------------------------     GET DATA");
     while (documento==null) {
+      /*
       pinesColection.get().then((QuerySnapshot querySnapshot) =>
       {querySnapshot.docs.forEach((doc) {
         print("==========> " + doc.toString());
@@ -66,11 +70,28 @@ class DataBase{
         }
       })
 
+      });*/
+      pinesColection.doc(_idUser).get().then((value){
+        var d=value.data();
+        print(value.data());
+        print("ENCONTRADO " + _idUser);
+        documento = d;
       });
+
+
       //Si no existe
       if (documento == null) {
-        print("\n\n-----------------------------     CREANDO DOCUMENTO PARA EL USUARIO" +_idUser);
-        pinesColection.doc(_idUser).set({
+
+        print("\n\n-----------------------------     CREANDO DOCUMENTO PARA EL USUARIO " +_idUser);
+        /*
+        Future<void> addUser() {
+          return pinesColection.doc('ABC123').set({
+            "idUser": _idUser,
+            "Contador": 0
+          }).then((value) => print("User Added")).catchError((error) => print("Failed to add user: $error"));
+        }*/
+
+        pinesColection.doc(_idUser/*firebaseUser.uid*/).set({
           "idUser": _idUser,
           "Contador": 0
         }).then((_) {
@@ -146,8 +167,8 @@ class DataBase{
     Map<String, dynamic> map;
     String s = "{Notas: [";
     for (int i=0; i< arrayNot.length; i++){
-        s+="{Categoria: "+arrayNot[i].categoria+", Fecha: "+arrayNot[i].fechaString+", Prioridad: "+arrayNot[i].prioridad.toString()+", Texto: "+arrayNot[i].texto+", Titulo: "+arrayNot[i].titulo+"}";
-        if (i<(arrayNot.length)-1)  s+= ", ";
+      s+="{Categoria: "+arrayNot[i].categoria+", Fecha: "+arrayNot[i].fechaString+", Prioridad: "+arrayNot[i].prioridad.toString()+", Texto: "+arrayNot[i].texto+", Titulo: "+arrayNot[i].titulo+"}";
+      if (i<(arrayNot.length)-1)  s+= ", ";
     }
     s += "], Contador: "+arrayNot.length.toString()+"}";
     map=jsonDecode(s);

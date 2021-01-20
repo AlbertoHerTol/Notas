@@ -10,11 +10,8 @@ import 'BD.dart';
 /*
 ****************Codigo que podemos meter*************
 * var now = new DateTime.now();
-
 * var formatter = new DateFormat("yyyy-MM-dd");
-
 * String formattedDate = formatter.format(now);
-
 * print(formattedDate); // 2016-01-25
 *****************************************************
 */

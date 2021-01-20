@@ -56,7 +56,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  DataBase BD;
+  DataBase BD = null;
   UserCredential user;
   String _linkImageProfile = "https://definicion.de/wp-content/uploads/2019/06/perfildeusuario.jpg";
   String _nameUser = "Anónimo";
