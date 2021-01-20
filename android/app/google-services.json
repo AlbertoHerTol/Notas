@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "263608878145",
+    "project_id": "misnotas-c3564",
+    "storage_bucket": "misnotas-c3564.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:263608878145:android:3037c391a905ae2efcf2c0",
+        "android_client_info": {
+          "package_name": "com.example.notas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "263608878145-duq63ngf5cmsqoclas55ohj685gjr8pi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.notas",
+            "certificate_hash": "c386e923e3c69b420c6848649c3402d0d09c476f"
+          }
+        },
+        {
+          "client_id": "263608878145-gkr1gnduckt7j8bt2365v5347ebp97g5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdPP9WDYD_Z0eJUgeyXoRyOoAffWJzLzA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "263608878145-gkr1gnduckt7j8bt2365v5347ebp97g5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
